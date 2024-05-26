@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
 .title {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   font-weight: 900;
   color: rgba(0, 0, 0, 0.3);
@@ -26,14 +26,127 @@
   height: 0.8vw;
   width: 0.5vw;
 }
+
 .scrollBar::-webkit-scrollbar-button:single-button:vertical:decrement {
   border-width: 0vw 0.3vw 0.4vw 0.3vw;
   border-color: transparent transparent #555555 transparent;
 }
+
 .scrollBar::-webkit-scrollbar-button:single-button:vertical:increment {
   border-width: 0vw 0.3vw 0.4vw 0 0.3vw;
   border-color: #555555 transparent transparent transparent;
 }
+
 .scrollBar::-webkit-scrollbar-thumb:horizontal {
   display: none;
+}
+
+.calendar-container {
+  margin: 1rem 0;
+}
+
+.react-calendar {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.task-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-form-container input,
+.task-form-container select,
+.task-form-container button,
+.task-form-container .react-datepicker-wrapper {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.task-form-container button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.task-form-container button:hover {
+  background-color: #1c86ee;
+}
+
+.my-2 button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.user-management {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-management h2,
+.user-management h3 {
+  margin-bottom: 20px;
+}
+
+.user-management ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-management li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.user-management button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.user-management button:hover {
+  background: #f0f0f0;
+}
+
+.highlight {
+  background-color: lightblue !important;
+  color: white !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.highlight {
+  background-color: lightblue !important;
+  color: white !important;
+}
+
+.max-h-70vh {
+  max-height: 70vh;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.text-center.text-white {
+  margin-top: 2rem;
 }
