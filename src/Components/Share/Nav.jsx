@@ -5,7 +5,7 @@ import appIcon from '../../icon/AppIcon.png';
 const Nav = () => {
   return (
     <>
-      <div className='w-full bg-sky-900 md:px-16 p-2 py-5 drop-shadow-lg'>
+      <div className='w-full bg-sky-900 md:px-16 p-5 py-5 drop-shadow-lg'>
         <div className='flex md:justify-start justify-between items-center'>
           <div className='w-20 md:w-32 md:ml-2'>
             <img className='' src={appIcon} alt='site icon' />

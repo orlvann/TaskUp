@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Nav from '../Share/Nav';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import '../../App/App.css';
-
 const TaskListPage = () => {
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
@@ -14,7 +13,7 @@ const TaskListPage = () => {
   const [taskStatus, setTaskStatus] = useState('In Progress');
   const [subtaskTitle, setSubtaskTitle] = useState('');
   const [comment, setComment] = useState('');
-  const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -194,11 +193,11 @@ const TaskListPage = () => {
     }
   };
 
-  const highlightDates = tasks.map((task) => new Date(task.deadline));
-
-  const handleTaskClick = (taskId) => {
-    navigate(`/tasklist/${taskId}`);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
+
+  const highlightDates = tasks.map((task) => new Date(task.deadline));
 
   return (
     <div className='App bg-gradient-to-r from-cyan-900 to-indigo-900 w-full min-h-screen'>
@@ -252,21 +251,22 @@ const TaskListPage = () => {
               </div>
             </form>
           </div>
-          <div className='bg-white rounded-lg shadow-lg p-5'>
-            <h1 className='text-2xl font-bold mb-5'>Calendar</h1>
-            <DatePicker
-              inline
-              highlightDates={highlightDates}
-              dayClassName={(date) =>
-                tasks.find(
-                  (task) =>
-                    new Date(task.deadline).toDateString() ===
-                    date.toDateString()
-                )
-                  ? 'highlight'
-                  : undefined
-              }
-            />
+          <div className='welcome-container__calendar'>
+            <div className='calendar-container'>
+              <Calendar
+                onChange={handleDateChange}
+                value={selectedDate}
+                tileClassName={({ date, view }) =>
+                  view === 'month' &&
+                  highlightDates.some(
+                    (d) => d.toDateString() === date.toDateString()
+                  )
+                    ? 'highlight'
+                    : ''
+                }
+                className='calendar__calendar'
+              />
+            </div>
           </div>
         </div>
         <div className='bg-white rounded-lg shadow-lg p-5 w-3/4 max-h-[100vh] overflow-y-auto'>
@@ -286,12 +286,11 @@ const TaskListPage = () => {
                     className={`flex flex-col mb-2 p-2 border rounded ${getPriorityClass(
                       task.priority
                     )}`}
-                    onClick={() => handleTaskClick(task.id)}
                   >
                     <div className='flex justify-between items-center'>
                       <div>
                         <strong>{task.title}</strong> - {task.priority} - Due:{' '}
-                        {task.deadline}
+                        {new Date(task.deadline).toLocaleDateString()}
                       </div>
                       <div>
                         <button
@@ -446,12 +445,11 @@ const TaskListPage = () => {
                     className={`flex flex-col mb-2 p-2 border rounded ${getPriorityClass(
                       task.priority
                     )}`}
-                    onClick={() => handleTaskClick(task.id)}
                   >
                     <div className='flex justify-between items-center'>
                       <div>
                         <strong>{task.title}</strong> - {task.priority} - Due:{' '}
-                        {task.deadline}
+                        {new Date(task.deadline).toLocaleDateString()}
                       </div>
                       <div>
                         <button

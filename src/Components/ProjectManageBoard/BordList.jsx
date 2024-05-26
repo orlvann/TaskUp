@@ -1,12 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import SingleBordBox from "./SingleBordBox";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import SingleBordBox from './SingleBordBox';
 
 function BordList() {
   const allBord = useSelector((state) => state.bord);
   return (
     <div>
-      <div className="w-100 pb-4 md:px-16 m-0">
+      <div className='w-100 pb-4 md:px-16 m-0'>
         {allBord?.map((bord) => {
           return (
             <SingleBordBox
