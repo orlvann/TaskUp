@@ -11,7 +11,8 @@ const HomePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const navigate = useNavigate();
 
-  const boards = useSelector((state) => state.bord);
+  const boards = useSelector((state) => state.bord); // Fetch boards from Redux store
+
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const formattedTasks = savedTasks.map((task) => ({
@@ -95,7 +96,7 @@ const HomePage = () => {
               ))}
           </ul>
         </div>
-        <div className='welcome-container__tasks'>
+        <div className='welcome-container__tasks scrollBar'>
           <h2 className='text-xl font-bold mb-3'>Task List</h2>
           <ul>
             {tasks.map((task) => (
@@ -126,7 +127,7 @@ const HomePage = () => {
             ))}
           </ul>
         </div>
-        <div className='welcome-container__boards'>
+        <div className='welcome-container__boards scrollBar'>
           <h2 className='text-xl font-bold mb-3'>Latest Boards</h2>
           <div className='board-list'>
             {boards.map((board) => (

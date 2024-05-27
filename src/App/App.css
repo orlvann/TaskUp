@@ -1,6 +1,4 @@
 /* General Styles */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
-
 .title {
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
@@ -10,38 +8,26 @@
 }
 
 .scrollBar {
-  &::-webkit-scrollbar {
-    width: 0.5vw;
-    background: #fbf6f6;
-  }
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 1rem; /* To prevent content being hidden behind scrollbar */
+  scrollbar-width: thin; /* Firefox */
+}
 
-  &::-webkit-scrollbar-thumb {
-    background: #9e9e9e;
-    border-radius: 1vw;
-    border: 0.2vw solid rgba(0, 0, 0, 0);
-  }
+/* Google-style scrollbar */
+.scrollBar::-webkit-scrollbar {
+  width: 10px;
+}
 
-  &::-webkit-scrollbar-button:single-button {
-    background-color: white;
-    display: block;
-    border-style: solid;
-    height: 0.8vw;
-    width: 0.5vw;
-  }
+.scrollBar::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
 
-  &::-webkit-scrollbar-button:single-button:vertical:decrement {
-    border-width: 0vw 0.3vw 0.4vw 0.3vw;
-    border-color: transparent transparent #555555 transparent;
-  }
-
-  &::-webkit-scrollbar-button:single-button:vertical:increment {
-    border-width: 0vw 0.3vw 0.4vw 0 0.3vw;
-    border-color: #555555 transparent transparent transparent;
-  }
-
-  &::-webkit-scrollbar-thumb:horizontal {
-    display: none;
-  }
+.scrollBar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Layout Containers */
@@ -84,44 +70,29 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 100%;
   height: 350px; /* Adjust height as needed */
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Ensure the border radius remains visible */
 }
 
-.welcome-container__calendar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-.welcome-container__reminders {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  overflow-y: auto;
-}
-
-.welcome-container__tasks {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
-
+.welcome-container__reminders,
+.welcome-container__tasks,
 .welcome-container__boards {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  overflow-y: auto;
+  border-radius: 10px; /* Add rounded corners */
 }
 
 /* Component Styles */
 .calendar {
   &__container {
+    margin: 1rem 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     max-width: 100%;
+    margin-top: 10px;
   }
 }
 
@@ -257,19 +228,25 @@
   margin-top: 0.5rem;
 }
 
+.text-center.text-white {
+  margin-top: 2rem;
+}
+
 .welcome-message {
-  margin-top: 2rem; /* Adjust this value as needed */
+  margin-top: 4rem; /* Adjust this value as needed */
 }
 
 .calendar-container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   max-width: 100%;
+  margin-top: 10px;
 }
 
 .calendar-container .react-calendar {
+  max-width: 100%;
   width: 90%;
 }
 
@@ -296,4 +273,141 @@
 
 .bg-purple-300 {
   background-color: #d8b4fe;
+}
+/* Google-style scrollbar */
+.scrollBar::-webkit-scrollbar {
+  width: 10px; /* Adjust the width as needed */
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3; /* Light gray color for the scrollbar thumb */
+  border: 2px solid transparent; /* Transparent border */
+  border-radius: 8px; /* Rounded corners */
+  background-clip: padding-box; /* Ensures the background doesn't bleed into the border */
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+/* Other styles */
+.scrollBar {
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 1rem; /* To prevent content being hidden behind scrollbar */
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.max-h-70vh {
+  max-height: 70vh;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-container__calendar,
+.welcome-container__reminders,
+.welcome-container__tasks,
+.welcome-container__boards {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 350px; /* Adjust height as needed */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensure the border radius remains visible */
+}
+
+.welcome-container__reminders,
+.welcome-container__tasks,
+.welcome-container__boards {
+  overflow-y: auto;
+  border-radius: 10px; /* Add rounded corners */
+}
+/* Hide scrollbars while still allowing scrolling */
+.scrollBar {
+  overflow-y: scroll;
+  max-height: 100%;
+  padding-right: 1rem; /* To prevent content being hidden behind scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollBar::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  height: 0;
+}
+
+/* Layout Containers */
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.max-h-70vh {
+  max-height: 70vh;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-container__calendar,
+.welcome-container__reminders,
+.welcome-container__tasks,
+.welcome-container__boards {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 350px; /* Adjust height as needed */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensure the border radius remains visible */
+}
+
+.welcome-container__reminders,
+.welcome-container__tasks,
+.welcome-container__boards {
+  overflow-y: auto;
+  border-radius: 10px; /* Add rounded corners */
 }
