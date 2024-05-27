@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Share/Nav';
 import DatePicker from 'react-datepicker';
 import Calendar from 'react-calendar';
+import 'react-datepicker/dist/react-datepicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../../App/App.css';
+
 const TaskListPage = () => {
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
